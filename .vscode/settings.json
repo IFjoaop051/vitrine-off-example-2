@@ -1,0 +1,11 @@
+{
+  "editor.tabSize": 2,
+  "editor.detectIndentation": false,
+  "python.analysis.typeCheckingMode": "standard",
+  "python.analysis.autoImportCompletions": false,
+  "python.analysis.aiCodeActions": {
+    "implementAbstractClasses": false,
+    "generateSymbol": false,
+    "convertFormatString": false
+  }
+}
