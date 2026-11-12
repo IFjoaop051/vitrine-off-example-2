@@ -1,0 +1,35 @@
+{% load django_bootstrap5 %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products List</title>
+    {% bootstrap_css %}
+</head>
+<body>
+    <main class="container">
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Available Items</th>
+            <th scope="col">Category</th>
+            <th scope="col">Price</th>
+            <!-- <th scope="col">image</th> -->
+          </tr>
+        </thead>
+        <tbody>
+          {% for c in products %}
+          <tr>
+            <td scope="row">{{ c.product_name }}</td>
+            <td scope="row">{{ c.available_items }}</td>
+            <td scope="row">{{ c.product_category }}</td>
+            <td scope="row">{{ c.price }}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </main>
+</body>
+</html>

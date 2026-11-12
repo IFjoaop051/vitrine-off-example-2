@@ -1,0 +1,32 @@
+{% load django_bootstrap5 %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sales List</title>
+    {% bootstrap_css %}
+</head>
+<body>
+    <main class="container">
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Client name</th>
+            <th scope="col">Date</th>
+            <th scope="col">Discount</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for c in customers %}
+          <tr>
+            <td scope="row">{{ c.client.full_name }}</td>
+            <td scope="row">{{ c.when_sold }}</td>
+            <td scope="row">{{ c.total_discount }}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </main>
+</body>
+</html>

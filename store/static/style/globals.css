@@ -1,0 +1,36 @@
+:root {
+  --sidebar-width: 280px;
+  --header-height: 129.03px;
+}
+
+
+.head-logo {
+  gap: 1rem;
+
+  & > img {
+    width: 90px;
+    height: auto;
+  }
+
+  & > div {
+    flex-direction: column !important;
+    height: 100%;
+    padding-top: 0.5rem;
+  }
+}
+
+.sidebar {
+  width: var(--sidebar-width);
+  height: calc(100dvh - var(--header-height));
+  position: fixed;
+  top: var(--header-height);
+  left: 0;
+}
+
+.body-main {
+  width: calc(100% - var(--sidebar-width));
+  height: calc(100dvh - var(--header-height));
+  margin-left: var(--sidebar-width);
+  padding: 1rem;
+  overflow: auto;
+}

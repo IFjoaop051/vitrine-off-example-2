@@ -1,11 +1,22 @@
+{% load static %}
+{% load django_bootstrap5 %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'style/globals.css' %}">
     <title>Vitrine Off Example</title>
+    {% bootstrap_css %}
 </head>
 <body>
-    <span>Showing example application for project &apos;Vitrine Off&apos;</span>
+    {% include 'partials/header.html' %}
+    {% include 'partials/sidebar.html' %}
+    <main class="body-main">
+      <div class="container">
+        store items will be placed here...
+      </div>
+    </main>
 </body>
 </html>

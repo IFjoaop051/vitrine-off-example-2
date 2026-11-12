@@ -23,4 +23,11 @@ import store.views as store_views
 urlpatterns = [
   path('admin/', admin.site.urls),
   path('', store_views.render_index),
+  path('customers', store_views.query_clients, name='query_clients'),
+  path('products', store_views.query_products, name='query_products'),
+  path('sales', store_views.query_sales, name='query_sales'),
+  path('customer/new', store_views.put_client, name='put_client'),
+  path('user/new', store_views.put_user, name='put_user'),
+  path('product/new', store_views.put_product, name='put_product'),
+  path('sale/new', store_views.put_sale, name='put_sale'),
 ]

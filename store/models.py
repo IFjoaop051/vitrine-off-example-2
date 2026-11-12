@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
+from store.uid import uuid7
 
 # Create your models here.
 
@@ -19,7 +20,7 @@ class User(AbstractUser):
   )
 
 
-class Client(models.Model):
+class Customer(models.Model):
   GENDER_CHOICES = [
     ('M', 'Male'),
     ('F', 'Female'),
@@ -30,14 +31,14 @@ class Client(models.Model):
   full_name = models.CharField(max_length=120, null=False, blank=False)
   gender = models.CharField(max_length=1, choices=GENDER_CHOICES, null=False, blank=False)
   phone_no = models.TextField(null=False, blank=False)
-  notes = models.TextField(null=True, blank=False)
+  notes = models.TextField(null=True, blank=True)
 
 
 class Sale(models.Model):
-  client = models.ForeignKey(Client, on_delete=models.RESTRICT)
+  client = models.ForeignKey(Customer, on_delete=models.RESTRICT)
 
   seq_id = models.BigAutoField(primary_key=True) # Sequential Identifier for DA
-  crypt_id = models.UUIDField(editable=False, unique=True) # Shareable ID (avoids IDOR attacks)
+  crypt_id = models.UUIDField(editable=False, unique=True, default=uuid7) # Shareable ID (avoids IDOR attacks)
   when_sold = models.DateTimeField(null=False)
   payment_way = models.CharField(max_length=16)
   total_discount = models.DecimalField(decimal_places=3, max_digits=7)
@@ -51,11 +52,11 @@ class Product(models.Model):
     ('SKIRTS', 'Skirts'),
   ]
 
-  product_id = models.UUIDField(primary_key=True, editable=False)
+  product_id = models.UUIDField(primary_key=True, editable=False, default=uuid7)
   available_items = models.PositiveSmallIntegerField()
   price = models.DecimalField(decimal_places=3, max_digits=7)
   product_name = models.TextField(max_length=120)
-  image_url = models.ImageField(upload_to="products/")
+  image_url = models.ImageField(upload_to="uc/products/")
   product_category = models.CharField(choices=PRODUCT_CATEGORIES, blank=False, null=False, max_length=8)
 
 
