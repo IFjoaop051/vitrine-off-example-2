@@ -13,7 +13,9 @@ def put_user(req):
     form = forms.UserForm(req.POST, req.FILES)
 
     if form.is_valid():
-      ins = form.save()
+      ins = form.save(commit=False)
+      ins.set_password(form.cleaned_data["password"])
+      ins.save()
 
       messages.success(req, "User was sucessful registered")
       form = forms.UserForm()

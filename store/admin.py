@@ -7,11 +7,8 @@ from store.models import *
 
 # Register your models here.
 
+admin.site.register(User, UserAdmin)
 
-@admin.register(User)
-class UserAdm(admin.ModelAdmin):
-  def get_list_display(self, request: HttpRequest) -> list[str | Callable[[Any], str | bool]] | tuple[str | Callable[[Any], str | bool], ...] | tuple[Never]:
-      return [field.name for field in self.model._meta.fields]
 
 @admin.register(Customer)
 class CustomerAdm(admin.ModelAdmin):
